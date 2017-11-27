@@ -1,10 +1,4 @@
-import subprocess
-import os
-
-
 from flask import Flask, jsonify, Response
-#from flask_httpauth import HTTPBasicAuth
-#from flask.ext.httpauth import HTTPBasicAuth
 from flask import render_template
 from flask import make_response
 from flask import request
@@ -30,8 +24,12 @@ app = Flask(__name__)
 def show_wifi():
     data = request.json
     stuff = pi.get_wifi_list()
-    #print(stuff)
     return make_response(jsonify(stuff), 200)
+
+@app.route('/reboot', methods=['GET'])
+def reboot():
+    pi.reboot()
+    return make_response("Rebooting", 200)
 
 @app.route('/set_wifi', methods=['POST', 'GET'])
 def set_wifi():
@@ -40,8 +38,7 @@ def set_wifi():
         key =  request.args.get('key')
         print(essid, key)
         pi.add_wpa_config(essid, key)
-        return make_response("Finished", 200)
-    #stuff = pi.get_wifi_list()
+        return make_response("Finished : Rebooting", 200)
     return make_response("Missig data", 200)
 
 

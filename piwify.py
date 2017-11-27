@@ -54,6 +54,10 @@ class Piwify:
                                "channel": channel, "quality": quality,
                                "enc": enc})
 
+    def reboot(self):
+        sudo_reboot = ["reboot", "reboot"]
+        self.run_command(sudo_reboot)
+
     def add_wpa_config(self, ssid, key, address=None):
         '''wpa_supplicant.conf  network={
 	ssid="STILLNOTFORYOU"
