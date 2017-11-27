@@ -1,0 +1,16 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+
+      <h1>SAPI</h1>
+
+  <div><a id=lnk-wifi href="/wifi">View Wifi</a></div>
+  <div><a id=lnk-reboot href="/reboot">Reboot</a></div>
+
+<form action='/set_wifi'>
+<div><p id=result> </p></div>
+<div><p id=turl> </p></div>
+</form>
+
+{% endblock %}
