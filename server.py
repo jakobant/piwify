@@ -5,7 +5,7 @@ from flask import request
 import piwify
 import os
 
-pi = piwify.Piwify("wlp3s0")
+pi = piwify.Piwify("wlan0")
 
 
 def root_dir():  # pragma: no cover
