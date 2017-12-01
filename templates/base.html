@@ -11,6 +11,8 @@
 				  time: $('input[name="time"]').val(),
 				  zoom: $('input[name="zoom"]').val(),
 				  startat: $('input[name="startat"]').val(),
+				  overscan: $('input[name="overscan"]').val(),
+				  camera: $('input[name="camera"]').val(),
 				}, function(data) {
 				  $("#result").text(data.result);
 				});
@@ -54,6 +56,8 @@
                  + "</tr>";
 				  });
 				  eachrow = eachrow + "</table>"
+				  + "Disable Overscan<input type='checkbox' name='overscan' value='true'>"
+				  + "Enable Raspi Camera<input type='checkbox' name='camera' value='true'>"
 				  + "Set Wifi Key (Will reboot): <input type='text' name='key' value=''><br><input type='submit' value='Submit'>";
 				  $('#turl').append(eachrow);
 				});

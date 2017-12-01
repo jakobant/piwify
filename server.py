@@ -38,7 +38,12 @@ def set_wifi():
         key =  request.args.get('key')
         print(essid, key)
         pi.add_wpa_config(essid, key)
-        return make_response("Finished : Rebooting", 200)
+        if request.args.get('camera') == 'true':
+            pi.enable_camera()
+        if request.args.get('overscan') == 'true':
+            pi.disable_overscan()
+        pi.reboot_timer(10)
+        return make_response("Finished : Rebooting in 10 sec ...", 200)
     return make_response("Missig data", 200)
 
 

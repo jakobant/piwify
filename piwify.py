@@ -1,6 +1,7 @@
 import subprocess
 import re
 import shutil
+import threading
 
 class Piwify:
     def __init__(self, wifi="wlan0"):
@@ -55,8 +56,12 @@ class Piwify:
                                "enc": enc})
 
     def reboot(self):
-        sudo_reboot = ["reboot", "reboot"]
+        sudo_reboot = ["sudo", "reboot"]
         self.run_command(sudo_reboot)
+
+    def reboot_timer(self, time):
+        t = threading.Timer(time, self.reboot)
+        t.start()
 
     def add_wpa_config(self, ssid, key, address=None):
         '''wpa_supplicant.conf  network={
@@ -72,10 +77,15 @@ class Piwify:
         with open('/tmp/wpa_supplicant.conf', "a") as myfile:
             myfile.write(config)
         sudo_cp = ["sudo", "cp", "/tmp/wpa_supplicant.conf", "/etc/wpa_supplicant/wpa_supplicant.conf"]
-        sudo_reboot = ["sudo", "reboot"]
         self.run_command(sudo_cp)
-        self.run_command(sudo_reboot)
 
+    def enable_camera(self):
+        sudo_enable_camera = [ "sudo", "./enable_camera.sh" ]
+        self.run_command(sudo_enable_camera)
+
+    def disable_overscan(self):
+        sudo_disable_overscan = [ "sudo", "./disable_overscan.sh"]
+        self.run_command(sudo_disable_overscan)
 
 #pi = Piwify("wlp3s0")
 #for cell in pi.get_wifi_list():
