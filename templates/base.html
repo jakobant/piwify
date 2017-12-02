@@ -60,11 +60,13 @@
                  + "</tr>";
 				  });
 				  eachrow = eachrow + "</table>"
-				  + "Disable Overscan<input type='checkbox' name='overscan' value='true'><br>"
-				  + "Enable Raspi Camera<input type='checkbox' name='camera' value='true'><br>"
-				  + "Enable ssh<input type='checkbox' name='ssh' value='true'><input type='text' name='sshpass' value=''><br>"
-				  + "Enable domain<input type='checkbox' name='domain' value='true'><input type='text' name='domain_prefix' value=''><br>"
-				  + "Set Wifi Key (Will reboot): <input type='text' name='key' value=''><br><input type='submit' value='Submit'>";
+				  + "<table class='table table-striped table-bordered' cellspacing='0' width='100%'>"
+				  + "<tr><td><input type='checkbox' name='overscan' value='true'>Disable Overscan</td><td></td></tr>"
+				  + "<tr><td><input type='checkbox' name='camera' value='true'>Enable Raspi Camera</td><td></td></tr>"
+				  + "<tr><td><input type='checkbox' name='ssh' value='true'>Enable ssh</td><td>Password:<input type='text' name='sshpass' value='changeme'></td></tr>"
+				  + "<tr><td><input type='checkbox' name='domain' value='true'>Enable domain</td><td>Domain:<input type='text' name='domain_prefix' value='changeme.to'></td></tr>"
+				  + "<tr><td>Set Wifi Key<input type='text' name='key' value=''></td><td><b>Will reboot</b>:<input type='submit' value='Submit'></td></tr>";
+				  + "</table>"
 				  $('#turl').append(eachrow);
 				});
 				return false;
