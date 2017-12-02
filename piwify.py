@@ -73,7 +73,10 @@ class Piwify:
 	ssid=\""""+ssid+"""\"
 	psk=\""""+key+"""\"
 }"""
-        shutil.copy2('/etc/wpa_supplicant/wpa_supplicant.conf','/tmp/wpa_supplicant.conf')
+        sudo_wpa_cp = ["sudo", "/etc/wpa_supplicant/wpa_supplicant.conf", "/tmp/wpa_supplicant.conf"]
+        sudo_wpa_mod = ["sudo", "chmod", "666", "/tmp/wpa_supplicant.conf"]
+        self.run_command(sudo_wpa_cp)
+        self.run_command(sudo_wpa_mod)
         with open('/tmp/wpa_supplicant.conf', "a") as myfile:
             myfile.write(config)
         sudo_cp = ["sudo", "cp", "/tmp/wpa_supplicant.conf", "/etc/wpa_supplicant/wpa_supplicant.conf"]
