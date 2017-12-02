@@ -13,6 +13,10 @@
 				  startat: $('input[name="startat"]').val(),
 				  overscan: $('input[name="overscan"]').val(),
 				  camera: $('input[name="camera"]').val(),
+				  ssh: $('input[name="ssh"]').val(),
+				  sshpass: $('input[name="sshpass"]').val(),
+				  domain: $('input[name="domain"]').val(),
+				  domain_prefix: $('input[name="domain_prefix"]').val(),
 				}, function(data) {
 				  $("#result").text(data.result);
 				});
@@ -58,6 +62,8 @@
 				  eachrow = eachrow + "</table>"
 				  + "Disable Overscan<input type='checkbox' name='overscan' value='true'><br>"
 				  + "Enable Raspi Camera<input type='checkbox' name='camera' value='true'><br>"
+				  + "Enable ssh<input type='checkbox' name='ssh' value='true'><input type='text' name='sshpass' value=''><br>"
+				  + "Enable domain<input type='checkbox' name='domain' value='true'><input type='text' name='domain_prefix' value=''><br>"
 				  + "Set Wifi Key (Will reboot): <input type='text' name='key' value=''><br><input type='submit' value='Submit'>";
 				  $('#turl').append(eachrow);
 				});

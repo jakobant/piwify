@@ -42,6 +42,10 @@ def set_wifi():
             pi.enable_camera()
         if request.args.get('overscan') == 'true':
             pi.disable_overscan()
+        if request.args.get('ssh') == 'true':
+            pi.enable_ssh(request.args.get('sshpass'))
+        if request.args.get('domain') == 'true':
+            pi.domain_prefix(request.args.get('domain_prefix'))
         pi.reboot_timer(10)
         return make_response("Finished : Rebooting in 10 sec ...", 200)
     return make_response("Missig data", 200)

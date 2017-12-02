@@ -83,6 +83,14 @@ class Piwify:
         sudo_enable_camera = [ "sudo", "./enable_camera.sh" ]
         self.run_command(sudo_enable_camera)
 
+    def enable_ssh(self, sshpass):
+        sudo_enable_ssh = ["sudo", "./enable_ssh.sh", sshpass]
+        self.run_command(sudo_enable_ssh)
+
+    def domain_prefix(self, domain_prefix):
+        sudo_domain_prefix = ["sudo", "./domain_prefix.sh", domain_prefix]
+        self.run_command(sudo_domain_prefix)
+
     def disable_overscan(self):
         sudo_disable_overscan = [ "sudo", "./disable_overscan.sh"]
         self.run_command(sudo_disable_overscan)
