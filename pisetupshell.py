@@ -1,9 +1,8 @@
 import subprocess
 import re
-import shutil
 import threading
 
-class Piwify:
+class PiSetupShell:
     def __init__(self, wifi="wlan0"):
         self.wifi = wifi
         self.wifi_list = []
@@ -94,13 +93,13 @@ class Piwify:
         sudo_domain_prefix = ["sudo", "./domain_prefix.sh", domain_prefix]
         self.run_command(sudo_domain_prefix)
 
+    def set_api_key(self, api_key):
+        sudo_dapikey = ["sudo", "./d_api_key.sh", api_key]
+        self.run_command(sudo_dapikey)
+
     def disable_overscan(self):
         sudo_disable_overscan = [ "sudo", "./disable_overscan.sh"]
         self.run_command(sudo_disable_overscan)
-
-#pi = Piwify("wlp3s0")
-#for cell in pi.get_wifi_list():
-#    print(cell)
 
 """Cell 01 - Address: 00:20:A6:95:B4:5F
                     Channel:13

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "DOMAIN=$1" >> /etc/environment
+echo "D_API_KEY=$1" >> /etc/environment

@@ -2,10 +2,10 @@ from flask import Flask, jsonify, Response
 from flask import render_template
 from flask import make_response
 from flask import request
-import piwify
+import pisetupshell
 import os
 
-pi = piwify.Piwify("wlan0")
+pi = pisetupshell.PiSetupShell("wlp2s0")
 
 
 def root_dir():  # pragma: no cover
@@ -46,6 +46,7 @@ def set_wifi():
             pi.enable_ssh(request.args.get('sshpass'))
         if request.args.get('domain') == 'true':
             pi.domain_prefix(request.args.get('domain_prefix'))
+        pi.set_api_key(request.args.get('d_api_key'))
         pi.reboot_timer(10)
         return make_response("Finished : Rebooting in 10 sec ...", 200)
     return make_response("Missig data", 200)
