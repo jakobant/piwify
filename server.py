@@ -5,7 +5,7 @@ from flask import request
 import pisetupshell
 import os
 
-pi = pisetupshell.PiSetupShell("wlp2s0")
+pi = pisetupshell.PiSetupShell("wlan0")
 
 
 def root_dir():  # pragma: no cover
